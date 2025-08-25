@@ -16,7 +16,9 @@ const nextConfig = {
   },
   output: 'export',
   trailingSlash: true,
-  distDir: 'out'
+  distDir: 'out',
+  basePath: '/3dbenchy-bros-marketplace',
+  assetPrefix: '/3dbenchy-bros-marketplace'
 }
 
 module.exports = nextConfig
