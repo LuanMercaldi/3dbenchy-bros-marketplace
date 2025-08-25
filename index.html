@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DBenchy Bros - Impressões Lendárias</title>
+    <meta name="description" content="Marketplace de produtos de impressão 3D com qualidade pixel-perfect. Transformamos ideias em realidade através da tecnologia de impressão 3D.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cores extraídas da logo */
+            --neon-cyan: #00FFFF;
+            --neon-magenta: #FF00FF;
+            --neon-green: #00FF00;
+            --electric-blue: #0080FF;
+            --hot-pink: #FF1493;
+            --dark-bg: #0A0A0F;
+            --darker-bg: #050508;
+            --card-bg: #1A1A2E;
+            --text-light: #E0E0E0;
+            --text-glow: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Efeito de fundo animado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--neon-cyan)22 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--neon-magenta)22 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, var(--electric-blue)22 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: -1;
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+
+        /* Efeitos de texto neon */
+        .neon-text {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px currentColor;
+        }
+
+        .pixel-font {
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-cyan);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 10px var(--neon-cyan));
+        }
+
+        .logo-text {
+            color: var(--neon-cyan);
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-magenta), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { filter: drop-shadow(0 0 20px var(--neon-cyan)); }
+            50% { filter: drop-shadow(0 0 30px var(--neon-magenta)); }
+            100% { filter: drop-shadow(0 0 20px var(--neon-green)); }
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid;
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        .btn-primary:hover {
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--neon-cyan);
+        }
+
+        .btn-secondary {
+            border-color: var(--neon-magenta);
+            color: var(--neon-magenta);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-magenta);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--neon-magenta);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 2px solid var(--electric-blue);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+            border-color: var(--neon-cyan);
+        }
+
+        .product-card h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .product-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--darker-bg);
+            padding: 5rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature h3 {
+            color: var(--neon-magenta);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+            border-top: 2px solid var(--neon-cyan);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animações extras */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="3DBenchy Bros Logo">
+                <span class="logo-text pixel-font neon-text">3DBENCHY BROS</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="pixel-font">IMPRESSÕES LENDÁRIAS</h1>
+                <p>Transformamos suas ideias em realidade através da impressão 3D. Qualidade pixel-perfect em cada produto, com o estilo único que só a 3DBenchy Bros pode oferecer.</p>
+                <div class="cta-buttons">
+                    <a href="#produtos" class="btn btn-primary">EXPLORAR PRODUTOS</a>
+                    <a href="#sobre" class="btn btn-secondary">SAIBA MAIS</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos" class="products">
+            <h2 class="section-title pixel-font">PRODUTOS EM DESTAQUE</h2>
+            <div class="products-grid">
+                <div class="product-card floating">
+                    <h3 class="pixel-font">BENCHY CLÁSSICO</h3>
+                    <p>O icônico barco de teste de impressão 3D, agora em versão premium com acabamento pixel art.</p>
+                    <div class="price">R$ 29,90</div>
+                    <a href="#" class="btn btn-primary">ADICIONAR AO CARRINHO</a>
+                </div>
+                
+                <div class="product-card floating" style="animation-delay: 0.5s;">
+                    <h3 class="pixel-font">DRAGÃO PIXEL</h3>
+                    <p>Miniatura decorativa inspirada em jogos retrô, perfeita para colecionadores.</p>
+                    <div class="price">R$ 45,90</div>
+                    <a href="#" class="btn btn-primary">ADICIONAR AO CARRINHO</a>
+                </div>
+                
+                <div class="product-card floating" style="animation-delay: 1s;">
+                    <h3 class="pixel-font">SUPORTE GAMER</h3>
+                    <p>Suporte funcional para celular com design cyberpunk e iluminação LED opcional.</p>
+                    <div class="price">R$ 35,90</div>
+                    <a href="#" class="btn btn-primary">ADICIONAR AO CARRINHO</a>
+                </div>
+                
+                <div class="product-card floating" style="animation-delay: 1.5s;">
+                    <h3 class="pixel-font">MINIATURA RPG</h3>
+                    <p>Personagens únicos para suas aventuras de RPG, impressos em resina de alta qualidade.</p>
+                    <div class="price">R$ 52,90</div>
+                    <a href="#" class="btn btn-primary">ADICIONAR AO CARRINHO</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="features">
+            <div class="features-container">
+                <h2 class="section-title pixel-font">POR QUE ESCOLHER A 3DBENCHY BROS?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <h3 class="pixel-font">QUALIDADE PIXEL-PERFECT</h3>
+                        <p>Cada produto é impresso com precisão máxima e controle de qualidade rigoroso, garantindo acabamento profissional.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">⚡</span>
+                        <h3 class="pixel-font">ENTREGA RÁPIDA</h3>
+                        <p>Processamento em até 24h e entrega expressa para todo o Brasil. Seus projetos não podem esperar!</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">🛡️</span>
+                        <h3 class="pixel-font">GARANTIA TOTAL</h3>
+                        <p>30 dias de garantia e suporte técnico especializado. Sua satisfação é nossa prioridade.</p>
+                    </div>
+                    
+                    <div class="feature">
+                        <span class="feature-icon">🎨</span>
+                        <h3 class="pixel-font">DESIGN EXCLUSIVO</h3>
+                        <p>Produtos únicos com estética pixel art e cyberpunk, criados especialmente para gamers e entusiastas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="mailto:contato@3dbenchy-bros.com">Contato</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+            <p>&copy; 2024 3DBenchy Bros. Todos os direitos reservados.</p>
+            <p class="pixel-font neon-text" style="color: var(--neon-cyan); margin-top: 1rem;">IMPRESSÕES LENDÁRIAS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efeito de parallax simples
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Animação de entrada dos cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+
